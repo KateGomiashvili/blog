@@ -1,0 +1,31 @@
+.container {
+    width: 100%;
+    height: calc(100vh - 120px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signin {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    width: 600px;
+    border-right: 1px solid #cfc1cf;
+    border-left: 1px solid #cfc1cf;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+input {
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid #cfc1cf;
+    box-shadow: 2px 2px 8px #e5e5e5;
+}

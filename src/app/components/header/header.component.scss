@@ -1,0 +1,42 @@
+header {
+    width: 100%;
+    height: 80px;
+    background-color: #cfc1cf;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.nav {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Emily;
+    a {
+        font-size: 20px;
+        padding: 20px;
+        color: #540e5d;
+    }
+}
+.nav > div {
+    border-bottom: 1px solid #540e5d;
+}
+.logo, .account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    font-family: Emily;
+    color: #540e5d;
+    img {
+        width: auto;
+        height: 100%;
+    }
+}

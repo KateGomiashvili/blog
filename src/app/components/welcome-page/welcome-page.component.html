@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="signin">
+        <h1>Sign In</h1>
+        <form [formGroup]="signinForm">
+            <label for="username">
+                <input id="username" placeholder="Enter your Username" formControlName="username">
+            </label>
+            <label for="password">
+                <input type="password" id="password" placeholder="Enter your password" formControlName="password">
+            </label>
+            <button type="submit">Sign In</button>
+        </form>
+        <p>Don't have an account yet? <a routerLink="/register" class="register-link">Register Now!</a></p>
+    </div>
+</div>

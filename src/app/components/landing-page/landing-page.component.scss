@@ -1,0 +1,22 @@
+.landing-page {
+    width: 100%;
+    height: calc(100vh - 120px);
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-content {
+   display: flex;
+   align-items: center;
+   gap: 20px;
+   h1 {
+    font-family: Emily;
+    color: #540e5d;
+    margin-bottom: 20px;
+   }
+}
+.buttons {
+    display: flex;
+    gap: 20px;
+}

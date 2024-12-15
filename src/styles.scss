@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Emily;
+}
+.wrapper {
+    width: 90%;
+    margin: auto;
+}
+@font-face {
+    font-family: Emily;
+    src: url("../src/assets/fonts/EmilysCandy-Regular.ttf");
+}
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+button {
+    background-color: #cfc1cf;
+    color: #540e5d;
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: Emily;
+    font-size: 16px;
+    cursor: pointer;
+    }
+.register-link {
+    color: #540e5d;
+}
