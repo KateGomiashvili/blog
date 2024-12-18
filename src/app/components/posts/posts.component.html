@@ -1,6 +1,7 @@
 <div class="background">
     <div class="posts-wrapper">
-        <!-- <div><button class="add-post" (click)="showWindow()">Add Post</button></div>
+        <div class="add-post">
+            <div><button class="add-post-button" (click)="showWindow()">Add Post</button></div>
             <div class="post-window" *ngIf="hidden">
                 <label for="author">Post Author
                     <input type="text" id="author" [(ngModel)]="postAuthor">
@@ -12,16 +13,20 @@
                     <input type="text" id="body" [(ngModel)]="postBody">
                 </label>
                 <button class="add" (click)="addPost()">Add</button>
-            </div> -->
+            </div>
+        </div>
         <div class="posts">
-            <div class="post" *ngFor="let post of posts" [routerLink]="['/posts', post.id]">
+            <div class="post" *ngFor="let post of posts">
                 <!-- <div>{{ getNameById(post.userId)}}</div> -->
                 <div class="author-title">
                     <div class="post-title"> {{post.title}}</div>
-                    <div class="post-author">user</div>
+                    <div class="post-author">{{ getNameById(post.userId)}}</div>
                 </div>
-                <button class="post-button" (click)="showPost(post)">Read Post</button>
-                <div *ngIf="!hiddenpost">{{post.body}}</div>
+                <button class="post-button" [routerLink]="['/posts', post.id]">Read Post</button>
+                <!-- <div *ngIf="!post.hidden" class="post-body">
+                    <div class="post-text">{{post.body}}</div>
+                    <button (click)="showComments(post)">{{ post.hidden ? 'Read Post' : 'Close' }}</button>
+                </div> -->
             </div>
         </div>
     </div>

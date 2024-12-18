@@ -3,7 +3,7 @@
 // }
 .posts-wrapper {
     width: 60%;
-    margin: 30px auto;
+    margin: auto;
 }
 .author-title {
     display: flex;
@@ -26,28 +26,39 @@
     background-color: #fff;
     font-family: Inter;
     font-size: 14px;
+    margin: 20px 0px;
 }
-
+.post-text {
+    font-family: Delius;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 7px 2px 8px -4px #d1e0e0;
+}
 
 
 
 
 
 .add-post {
-    background-color: blue;
-    color: #fff;
-    padding: 15px;
-    border: none;
-    outline: none;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    flex-direction: column;
+}
+.add-post-button {
+    margin: auto;
 }
 
 .post-window {
     width: 50%;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background-color: #4da6ff;
+    background-color: #cfc1cf;
     padding: 20px;
+    border-radius: 20px;
 
     input {
         width: 100%;
@@ -58,13 +69,17 @@
         margin-top: 10px;
         padding: 20px;
     }
+    label {
+        font-family: Inter;
+    }
 
     .add {
         width: 50px;
         padding: 10px;
-        background-color: red;
-        color: #fff;
+        background-color: #fff;
+        color: #540e5d;
         border: none;
         outline: none;
+        font-family: Inter;
     }
 }
