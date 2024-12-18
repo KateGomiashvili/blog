@@ -6,10 +6,12 @@ import { ApiService } from '../../services/api.service';
 import { DataService } from '../../services/data.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Comment } from '../../interfaces/comment.interface';
 
 @Component({
   selector: 'app-post-details',
   standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './post-details.component.html',
   styleUrls: ['./post-details.component.scss'],
 })
@@ -78,23 +80,21 @@ export class PostDetailsComponent implements OnInit {
     this.newComment = {
       postId: this.currentPost?.id,
       id: this.comments.length + 1,
-      name: this.newCommentName,
-      email: '',
       body: this.newCommentBody,
     };
     this.comments = [...this.comments, this.newComment];
-    this.saveService.allComments[this.currentPost.id] = this.comments; //saved updated comment array
+    this.dataService.allComments[this.currentPost.id] = this.comments; //saved updated comment array
 
-    console.log(this.saveService.allComments);
+    console.log(this.dataService.allComments);
 
-    this.saveService.savedComments = this.comments;
+    this.dataService.savedComments = this.comments;
 
     this.scrollToBottom();
     this.newCommentName = '';
     this.newCommentBody = '';
 
-    this.commentService
-      .sendData(this.newComment, this.currentPost?.id)
+    this.apiService
+      .sendCommentData(this.newComment, this.currentPost?.id)
       .pipe(
         tap(() => console.log('Comment added successfully!')),
         catchError((error) => {
@@ -113,18 +113,18 @@ export class PostDetailsComponent implements OnInit {
   }
   updatePost() {
     this.showEditWindow = false;
-    this.saveService.isPostChanged = true;
+    this.dataService.isPostChanged = true;
     this.currentPost.title = this.postNewTitle;
     this.currentPost.body = this.postNewBody;
 
-    const index = this.saveService.savedPosts.findIndex(
+    const index = this.dataService.savedPosts.findIndex(
       (post) => post.id === this.currentPost?.id
     );
     if (index != -1) {
-      this.saveService.savedPosts[index] = this.currentPost;
+      this.dataService.savedPosts[index] = this.currentPost;
     }
 
-    this.postService
+    this.apiService
       .updatePost(this.currentPost)
       .pipe(
         tap(() => console.log('Current post updated successfully!')),

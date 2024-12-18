@@ -1,1 +1,61 @@
-<p>post-details works!</p>
+<div class="background">
+    <div class="wrapper">
+        <div class="comments-section">
+            <div class="left-sidebar">
+                <div class="details" *ngIf="!showEditWindow">
+                    <div class="arrow-img" (click)="goBack()">
+                        <img src="../../../../assets/images/arrow-back.svg">
+                    </div>
+                    <h2>Title</h2>
+                    <h4>{{currentPost.title}}</h4>
+                    <h2>Body</h2>
+                    <h4>{{currentPost.body}}</h4>
+                    <button class="post-btn" (click)="editPost()">Edit</button>
+                </div>
+                <div class="edit-window" *ngIf="showEditWindow">
+                    <div class="close" (click)="closeWindow()">
+                        <img src="../../../../assets/images/x-small-svgrepo-com.svg">
+                    </div>
+                    <form>
+                        <label for="post_title">Title
+                            <input type="text" id="post_title" [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="postNewTitle">
+                        </label>
+                        <label for="post_body">Body
+                            <textarea type="text" id="post_body" [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="postNewBody"></textarea>
+                        </label>
+                        <button class="post-btn" (click)="updatePost()">Update</button>
+                    </form>
+                </div>
+            </div>
+            <div class="comments-sidebar">
+                <div class="comments">
+                    <div *ngFor="let comment of comments" class="comment-box">
+                        <div class="comment-user"></div>
+                        <div class="comment-contents">
+                            <div class="comment-body">{{comment.body}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="your-comment">
+                    <h3>Add Comment</h3>
+                    <div class="grey">
+                        <div class="comment-user"></div>
+                        <form>
+                            <label for="comment_name" class="comment-name">Name
+                                <input type="text" id="comment_name" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="newCommentName">
+                            </label>
+                            <label for="comment_body">Body
+                                <textarea type="text" id="comment_body" [ngModelOptions]="{standalone: true}"
+                                    [(ngModel)]="newCommentBody"></textarea>
+                            </label>
+                            <button (click)="addNewComment()">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

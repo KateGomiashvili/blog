@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ApiService } from '../services/api.service';
-import { Comment } from '../interfaces/comment';
+import { Comment } from '../interfaces/comment.interface';
 
 @Injectable({
   providedIn: 'root',

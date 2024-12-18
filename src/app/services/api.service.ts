@@ -3,7 +3,7 @@ import { User } from '../interfaces/user.interface';
 import { Post } from '../interfaces/post.interface';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Comment } from '../interfaces/comment';
+import { Comment } from '../interfaces/comment.interface';
 
 @Injectable({
   providedIn: 'root',
