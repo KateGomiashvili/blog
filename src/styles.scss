@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     font-family: Emily;
+    letter-spacing: 1px;
 }
 .wrapper {
     width: 90%;
@@ -12,6 +13,14 @@
 @font-face {
     font-family: Emily;
     src: url("../src/assets/fonts/EmilysCandy-Regular.ttf");
+}
+@font-face {
+    font-family: Delius;
+    src: url("../src/assets/fonts/Delius-Regular.ttf");
+}
+@font-face {
+    font-family: Inter;
+    src: url("../src/assets/fonts/Inter_18pt-Medium.ttf");
 }
 a {
     cursor: pointer;

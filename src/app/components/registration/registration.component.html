@@ -1,1 +1,18 @@
-<p>registration works!</p>
+<div class="container">
+    <div class="registration">
+        <h1>Sign Up</h1>
+        <form [formGroup]="registrationForm">
+            <label for="username">Username:
+                <input id="username" placeholder="Enter your Username" formControlName="username">
+            </label>
+            <label for="password">Password:
+                <input type="password" id="password" placeholder="Enter your password" formControlName="password">
+            </label>
+            <label for="password">Confirm Password:
+                <input type="password" id="password" placeholder="Confirm your password"
+                    formControlName="confirmpassword">
+            </label>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
