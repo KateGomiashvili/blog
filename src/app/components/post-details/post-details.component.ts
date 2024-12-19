@@ -24,6 +24,7 @@ export class PostDetailsComponent implements OnInit {
   postNewBody: string = ''; //ngModel name for edited post body
   newComment!: Comment;
   showEditWindow: boolean = false;
+  commentsAreShown: boolean = true;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
@@ -107,12 +108,14 @@ export class PostDetailsComponent implements OnInit {
 
   editPost() {
     this.showEditWindow = true;
+    this.commentsAreShown = false;
   }
   closeWindow() {
     this.showEditWindow = false;
   }
   updatePost() {
     this.showEditWindow = false;
+    this.commentsAreShown = !this.commentsAreShown;
     this.dataService.isPostChanged = true;
     this.currentPost.title = this.postNewTitle;
     this.currentPost.body = this.postNewBody;

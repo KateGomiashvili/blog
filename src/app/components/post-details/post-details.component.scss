@@ -1,0 +1,146 @@
+.comments {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.post-comments-section {
+    width: 60%;
+    margin: auto;
+}
+h2 {
+    font-size: 32px;
+    font-family: Delius;
+    color: #540e5d;
+    margin-bottom: 20px;
+}
+h4 {
+    font-family: Delius;
+    background-color: #fff9c4;
+    font-size: 26px;
+    border-radius: 20px;
+    line-height: 40px;
+    margin-bottom: 20px;
+    box-shadow: 7px 2px 8px -4px #d1e0e0;
+    padding: 20px;
+}
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+.arrow-img {
+    width: 40px;
+    height: 40px;
+    img {
+        width: 100%;
+    }
+}
+.post-btn {
+    font-family: Inter;
+    border-radius: 50%;
+}
+.comments-label {
+    display: flex;
+    justify-content: center;
+    p {
+    font-family: Inter;
+    font-weight: bold;
+    padding: 10px 0px;
+    }
+}
+.comments-section {
+    width: 80%;
+    margin:auto;
+}
+.comments-background {
+     background-color: #fff9c4;
+     padding: 20px 0px;
+     box-shadow: 7px 2px 8px -4px #d1e0e0;
+     margin-top: 20px;
+     border-radius: 20px;
+}
+.comment-body {
+    font-family: Delius;
+}
+.comment-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+}
+.profile-img {
+    width: 30px;
+    height: 30px;
+    img {
+        width: 100%;
+    }
+}
+.comment-contents {
+    width: 90%;
+}
+.your-comment {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    margin: 20px 0px;
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+    }
+    h3 {
+        font-family: Inter;
+    }
+}
+.comment-textarea {
+    width: 80%;
+    textarea {
+        width: 100%;
+        font-family: Delius;
+        font-size: 16px;
+        outline: none;
+        border-radius: 10px;
+    }
+}
+.edit-window {
+    background-color: #fff9c4;
+    border-radius: 20px;
+    margin: 20px auto;
+    box-shadow: 7px 2px 8px -4px #d1e0e0;
+    height: calc(100vh - 160px);
+    form {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        input, textarea {
+            width: 100%;
+            font-size: 16px;
+            font-family: Delius;
+            padding: 10px;
+            margin-bottom: 20px;
+            outline: none;
+            border-radius: 10px;
+        }
+        label {
+            font-family: Inter;
+            color: #540e5d;
+            margin-bottom: 20px;
+        }
+        button {
+            width: 100px;
+        }
+    }
+}
+.update-post {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    h3 {
+        font-family: Inter;
+        color: #540e5d;
+    }
+}

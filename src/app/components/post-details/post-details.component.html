@@ -1,20 +1,26 @@
 <div class="background">
     <div class="wrapper">
-        <div class="comments-section">
+        <div class="post-comments-section">
             <div class="left-sidebar">
                 <div class="details" *ngIf="!showEditWindow">
-                    <div class="arrow-img" (click)="goBack()">
-                        <img src="../../../../assets/images/arrow-back.svg">
+                    <div class="post-header">
+                        <div class="arrow-img" (click)="goBack()">
+                            <img src="../../../assets/images/back-left-direction.svg">
+                        </div>
+                        <div class="arrow-img" (click)="editPost()">
+                            <img src="../../../assets/images/edit-1479-svgrepo-com.svg">
+                        </div>
                     </div>
-                    <h2>Title</h2>
-                    <h4>{{currentPost.title}}</h4>
-                    <h2>Body</h2>
+                    <h2>{{currentPost.title}}</h2>
                     <h4>{{currentPost.body}}</h4>
-                    <button class="post-btn" (click)="editPost()">Edit</button>
+
                 </div>
                 <div class="edit-window" *ngIf="showEditWindow">
-                    <div class="close" (click)="closeWindow()">
-                        <img src="../../../../assets/images/x-small-svgrepo-com.svg">
+                    <div class="update-post">
+                        <div class="arrow-img" (click)="closeWindow()">
+                            <img src="../../../assets/images/back-left-direction.svg">
+                        </div>
+                        <h3>Update Post</h3>
                     </div>
                     <form>
                         <label for="post_title">Title
@@ -29,25 +35,29 @@
                     </form>
                 </div>
             </div>
-            <div class="comments-sidebar">
-                <div class="comments">
-                    <div *ngFor="let comment of comments" class="comment-box">
-                        <div class="comment-user"></div>
-                        <div class="comment-contents">
-                            <div class="comment-body">{{comment.body}}</div>
+            <hr>
+            <div *ngIf="commentsAreShown" class="comments-background">
+                <div class="comments-label">
+                    <p>Comments</p>
+                </div>
+
+                <div class="comments-section">
+                    <div class="comments">
+                        <div *ngFor="let comment of comments" class="comment-box">
+                            <div class="profile-img">
+                                <img src="../../../assets/images/user-rounded-svgrepo-com.svg">
+                            </div>
+                            <div class="comment-contents">
+                                <div class="comment-body">{{comment.body}}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="your-comment">
-                    <h3>Add Comment</h3>
-                    <div class="grey">
-                        <div class="comment-user"></div>
+                    <div class="your-comment">
+                        <div class="profile-img">
+                            <img src="../../../assets/images/user-rounded-svgrepo-com.svg">
+                        </div>
                         <form>
-                            <label for="comment_name" class="comment-name">Name
-                                <input type="text" id="comment_name" [ngModelOptions]="{standalone: true}"
-                                    [(ngModel)]="newCommentName">
-                            </label>
-                            <label for="comment_body">Body
+                            <label for="comment_body" class="comment-textarea">
                                 <textarea type="text" id="comment_body" [ngModelOptions]="{standalone: true}"
                                     [(ngModel)]="newCommentBody"></textarea>
                             </label>
