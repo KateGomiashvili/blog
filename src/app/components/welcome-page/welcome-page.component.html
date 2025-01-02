@@ -1,14 +1,23 @@
 <div class="container">
     <div class="signin">
         <h1>Sign In</h1>
-        <form [formGroup]="signinForm">
-            <label for="username">Username:
-                <input id="username" placeholder="Enter your Username" formControlName="username">
+        <form [formGroup]="signinForm" (ngSubmit)="onSignIn()">
+            <label for="sUsername">Username:
+                <input id="sUername" placeholder="Enter your Username" formControlName="username">
+                <div *ngIf="signinForm.get('username')?.invalid && signinForm.get('username')?.touched">
+                    <small>Username is required.</small>
+                </div>
             </label>
-            <label for="password">Password:
-                <input type="password" id="password" placeholder="Enter your password" formControlName="password">
+            <label for="sPassword">Password:
+                <input type="password" id="sPassword" placeholder="Enter your password" formControlName="password">
+                <div *ngIf="signinForm.get('password')?.invalid && signinForm.get('password')?.touched">
+                    <small>Password must be at least 6 characters long.</small>
+                </div>
             </label>
             <button type="submit">Sign In</button>
+            <div class="error-message" *ngIf="errorMessage">
+                {{ errorMessage }}
+            </div>
         </form>
         <p>Don't have an account yet? <a routerLink="/register" class="register-link">Register Now!</a></p>
     </div>

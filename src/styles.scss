@@ -10,6 +10,9 @@
     width: 90%;
     margin: auto;
 }
+body {
+    background-color: #f5f7fa;
+}
 @font-face {
     font-family: Emily;
     src: url("../src/assets/fonts/EmilysCandy-Regular.ttf");
@@ -27,13 +30,13 @@ a {
     text-decoration: none;
 }
 button {
-    background-color: #cfc1cf;
-    color: #540e5d;
+    background-color: #6a1b9a;
+    color: #fff;
     border: none;
     outline: none;
     padding: 10px 20px;
     border-radius: 10px;
-    font-family: Emily;
+    font-family: Inter;
     font-size: 16px;
     cursor: pointer;
     }

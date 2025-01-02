@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { Post } from '../interfaces/post.interface';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Comment } from '../interfaces/comment.interface';
 
 @Injectable({
@@ -18,8 +18,21 @@ export class ApiService {
     return this.http.get<Post[]>('https://jsonplaceholder.typicode.com/posts');
   }
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');
+    return this.http
+      .get<any[]>('https://jsonplaceholder.typicode.com/users')
+      .pipe(
+        map((users) =>
+          users.map((user) => ({
+            id: user.id,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            password: '', // Default password if not provided in API
+          }))
+        )
+      );
   }
+
   getNameById(nameId: number) {
     return this.users?.find((obj) => obj.id === nameId)?.name;
   }

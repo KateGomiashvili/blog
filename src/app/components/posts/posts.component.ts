@@ -59,6 +59,7 @@ export class PostsComponent implements OnInit {
         name: this.postAuthor,
         username: '',
         email: '',
+        password: '',
       },
       ...this.users,
     ];
