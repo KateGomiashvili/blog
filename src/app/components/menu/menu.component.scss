@@ -1,0 +1,17 @@
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #cfc1cf; 
+    position: absolute;
+    top: 80px;
+    right: 5vw;
+    padding: 15px 25px 15px 10px;
+    color: #540e5d;
+}
+.show {
+    display: flex;
+}
+.hide {
+    display: none;
+}

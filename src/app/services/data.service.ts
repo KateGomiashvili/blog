@@ -17,7 +17,7 @@ export class DataService {
   allComments: Comment[][] = Array.from({ length: 50 }, () => []);
   savedUsers!: User[];
   // allComments!: Comment[][];
-
+  currentUser?: User;
   isChanged: boolean = false;
   isNewComment: ChangedComments[] = [{ id: 0, changed: false }];
   isPostChanged: boolean = false;

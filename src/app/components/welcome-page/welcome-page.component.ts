@@ -48,6 +48,10 @@ export class WelcomePageComponent {
       );
 
       if (user) {
+        this.dataService.currentUser = this.dataService.savedUsers.find(
+          (x) => x.username == username
+        );
+        console.log(this.dataService.currentUser);
         this.router.navigate(['/']);
       } else {
         this.errorMessage = 'Invalid username or password';
