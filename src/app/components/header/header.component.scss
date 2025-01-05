@@ -27,7 +27,10 @@ header {
 .nav > div {
     border-bottom: 1px solid #540e5d;
 }
-.logo, .account {
+.account-info > div {
+    font-size: 18px;
+}
+.logo, .account-info {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -53,4 +56,8 @@ header {
   .not-signed-in {
     display: none;
   }
+// .account-info {
+//     display: flex;
+//     flex-direction: column;
+// }
   

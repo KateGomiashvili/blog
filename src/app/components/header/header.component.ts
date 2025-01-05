@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterModule, Routes } from '@angular/router';
+import { Router, RouterLink, RouterModule, Routes } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
@@ -12,7 +12,7 @@ import { MenuComponent } from '../menu/menu.component';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
   get isSignedIn(): boolean {
     return !!this.dataService.currentUser; // Returns true if currentUser is set
   }
@@ -20,5 +20,10 @@ export class HeaderComponent {
     return this.dataService.currentUser
       ? this.dataService.currentUser.username
       : 'Sign In';
+  }
+  handleButtonClick(): void {
+    if (!this.isSignedIn) {
+      this.router.navigate(['/login']); // Redirect to the sign-in page
+    }
   }
 }

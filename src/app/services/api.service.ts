@@ -52,6 +52,11 @@ export class ApiService {
       `https://jsonplaceholder.typicode.com/posts/${postId}`
     );
   }
+  getPostsByUserId(userId: number): Observable<Post[]> {
+    return this.http.get<Post[]>(
+      `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+    );
+  }
   sendCommentData(data: Comment, postId: any): Observable<Comment> {
     let apiUrlForComment = `https://jsonplaceholder.typicode.com/posts/${postId}/comments`;
     return this.http.post<Comment>(`${apiUrlForComment}`, data);

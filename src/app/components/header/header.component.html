@@ -9,19 +9,22 @@
                 <div><a routerLink="/posts">Posts</a></div>
                 <div><a>Albums</a></div>
             </div>
-            <a routerLink="/login">
+            <a (click)="handleButtonClick()">
                 <div class="account">
+                    <div class="account-info">
 
+                        <div>{{ currentUserName }} </div>
+                        <div [ngClass]="{ 'signed-in': isSignedIn, 'not-signed-in': !isSignedIn }" class="arrow"><img
+                                src="../../../assets/images/down-arrow-backup-2-svgrepo-com (1).svg"></div>
 
-                    <div>{{ currentUserName }} </div>
-                    <div [ngClass]="{ 'signed-in': isSignedIn, 'not-signed-in': !isSignedIn }" class="arrow"><img
-                            src="../../../assets/images/down-arrow-backup-2-svgrepo-com (1).svg"></div>
+                        <img src="../../../assets/images/user-rounded-svgrepo-com.svg">
 
-                    <img src="../../../assets/images/user-rounded-svgrepo-com.svg">
-
+                    </div>
+                    <app-menu [shown]="isSignedIn"></app-menu>
                 </div>
+
             </a>
         </div>
-        <app-menu [shown]="isSignedIn"></app-menu>
+
     </div>
 </header>

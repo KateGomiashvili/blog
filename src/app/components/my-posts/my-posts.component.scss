@@ -1,0 +1,28 @@
+.posts-wrapper {
+    width: 60%;
+    margin: auto;
+}
+.author-title {
+    display: flex;
+    justify-content: space-between;
+}
+.post {
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 7px 2px 8px -4px #d1e0e0;
+}
+.post-title {
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Delius;
+    color: #333333;
+}
+.post-text {
+    font-family: Delius;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 7px 2px 8px -4px #d1e0e0;
+    color: #333333;
+}

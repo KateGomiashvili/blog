@@ -7,6 +7,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import { postResolver } from './guards/post-resolver.guard';
 import { CommentsResolver } from './guards/comments-resolve.guard';
 import { PostDetailsComponent } from './components/post-details/post-details.component';
+import { MyPostsComponent } from './components/my-posts/my-posts.component';
 
 export const routes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -18,4 +19,5 @@ export const routes: Routes = [
     component: PostDetailsComponent,
     resolve: { post: postResolver, comments: CommentsResolver },
   },
+  { path: 'my-posts', component: MyPostsComponent },
 ];

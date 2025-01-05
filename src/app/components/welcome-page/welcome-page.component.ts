@@ -28,7 +28,7 @@ export class WelcomePageComponent {
     // Initialize form
     this.signinForm = this.fb.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: [''],
     });
     // this.dataService.fetchUsers().subscribe({
     //   next: (users) => {
