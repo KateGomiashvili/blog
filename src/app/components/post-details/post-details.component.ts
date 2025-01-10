@@ -25,6 +25,7 @@ export class PostDetailsComponent implements OnInit {
   newComment!: Comment;
   showEditWindow: boolean = false;
   commentsAreShown: boolean = true;
+  ownPost: boolean = false;
   constructor(
     private apiService: ApiService,
     private route: ActivatedRoute,
@@ -33,7 +34,7 @@ export class PostDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.scrollToBottom();
+    // this.scrollToBottom();
     const currentId = Number(this.route?.snapshot.paramMap.get('id'));
     //if there is no new post, get data from api, else from service
     if (this.dataService.isPostChanged === false) {
@@ -61,6 +62,9 @@ export class PostDetailsComponent implements OnInit {
       });
     } else {
       this.comments = this.dataService.allComments[currentId];
+    }
+    if (this.currentPost.userId == this.dataService.currentUser?.id) {
+      this.ownPost = true;
     }
   }
   private scrollToBottom(): void {

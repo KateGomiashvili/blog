@@ -24,12 +24,16 @@ header {
         color: #540e5d;
     }
 }
-.nav > div {
-    border-bottom: 1px solid #540e5d;
-}
+// .nav > div {
+//     border-bottom: 1px solid #540e5d;
+// }
 .account-info > div {
     font-size: 18px;
 }
+// .active {
+//     color: red !important;
+//     background-color: green !important
+// }
 .logo, .account-info {
     display: flex;
     align-items: center;

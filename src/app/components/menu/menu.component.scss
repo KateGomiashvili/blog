@@ -11,8 +11,13 @@
     width: 200px;
 }
 .show {
-    display: flex;
+    visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease-in-out;
 }
 .hide {
-    display: none;
+    visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }

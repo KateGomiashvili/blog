@@ -6,8 +6,12 @@
                 <h1>Blog</h1>
             </div>
             <div class="nav">
-                <div><a routerLink="/posts">Posts</a></div>
-                <div><a>Albums</a></div>
+                <div>
+                    <a [routerLink]="'/posts'" routerLinkActive="active" appUnderline [linkName]="'/posts'">
+                        Posts
+                    </a>
+                </div>
+                <div><a appUnderline [linkName]="'/albums'">Albums</a></div>
             </div>
             <a (click)="handleButtonClick()">
                 <div class="account">
@@ -20,7 +24,7 @@
                         <img src="../../../assets/images/user-rounded-svgrepo-com.svg">
 
                     </div>
-                    <app-menu [shown]="isSignedIn"></app-menu>
+                    <app-menu *ngIf="menuVisible" [shown]="isSignedIn"></app-menu>
                 </div>
 
             </a>

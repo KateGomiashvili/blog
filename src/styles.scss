@@ -25,10 +25,34 @@ body {
     font-family: Inter;
     src: url("../src/assets/fonts/Inter_18pt-Medium.ttf");
 }
+
 a {
-    cursor: pointer;
     text-decoration: none;
-}
+    color: inherit;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: #540e5d;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+  
+  a.hovered::after {
+    width: 90%;
+  }
+  
+  a.active::after {
+    width: 90%;
+  }
+  
 button {
     background-color: #6a1b9a;
     color: #fff;
@@ -43,3 +67,12 @@ button {
 .register-link {
     color: #540e5d;
 }
+// a.active {
+//     border-bottom: 1px solid currentColor;
+//     transition: border-bottom 0.3s ease-out;
+//   }
+  
+//   .active {
+//     border-bottom: 2px solid currentColor;
+//     transition: border-bottom 0.3s ease-out;
+//   }

@@ -7,7 +7,7 @@
                         <div class="arrow-img" (click)="goBack()">
                             <img src="../../../assets/images/back-left-direction.svg">
                         </div>
-                        <div class="arrow-img" (click)="editPost()">
+                        <div [ngClass]="{ 'show': ownPost, 'hide': !ownPost }" class="arrow-img" (click)="editPost()">
                             <img src="../../../assets/images/edit-1479-svgrepo-com.svg">
                         </div>
                     </div>
