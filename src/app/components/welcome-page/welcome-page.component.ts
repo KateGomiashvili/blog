@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { User } from '../../interfaces/user.interface';
 import { DataService } from '../../services/data.service';
 import { CommonModule } from '@angular/common';
+import { ApiService } from '../../services/api.service';
 @Component({
   selector: 'app-welcome-page',
   standalone: true,
@@ -20,10 +21,21 @@ export class WelcomePageComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
+    private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
+    if (!this.dataService.savedUsers) {
+      this.apiService.getUsers().subscribe({
+        next: (users) => {
+          this.dataService.savedUsers = users; // Assign the resolved User[] data
+        },
+        error: (err) => {
+          console.error('Error fetching users:', err);
+        },
+      });
+    }
     this.users = this.dataService.savedUsers;
     // Initialize form
     this.signinForm = this.fb.group({

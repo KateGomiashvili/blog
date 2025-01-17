@@ -23,6 +23,7 @@ export class RegistrationComponent {
   errorMessage: string = ''; // For error messages
   successMessage: string = ''; // For success messages
   existingUsers!: User[];
+  passwordValidatorService: any;
   constructor(
     private fb: FormBuilder,
     private dataService: DataService,

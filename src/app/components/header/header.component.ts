@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  Router,
-  RouterLink,
-  RouterLinkActive,
-  RouterModule,
-  Routes,
-} from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from '../menu/menu.component';
