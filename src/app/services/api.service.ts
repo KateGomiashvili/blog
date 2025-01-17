@@ -4,6 +4,8 @@ import { Post } from '../interfaces/post.interface';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Comment } from '../interfaces/comment.interface';
+import { Album } from '../interfaces/album';
+import { Photo } from '../interfaces/photo';
 
 @Injectable({
   providedIn: 'root',
@@ -66,5 +68,20 @@ export class ApiService {
   }
   updatePostData(data: Post): Observable<Post> {
     return this.http.put<Post>(`${this.apiUrlForPost}/${data.id}`, data);
+  }
+  getAlbums(): Observable<Album[]> {
+    return this.http.get<Album[]>(
+      'https://jsonplaceholder.typicode.com/albums'
+    );
+  }
+  getAlbumById(id: number): Observable<Photo[]> {
+    return this.http.get<Photo[]>(
+      `https://jsonplaceholder.typicode.com/albums/${id}/photos`
+    );
+  }
+  getPhotos(): Observable<Photo[]> {
+    return this.http.get<Photo[]>(
+      'https://jsonplaceholder.typicode.com/photos'
+    );
   }
 }

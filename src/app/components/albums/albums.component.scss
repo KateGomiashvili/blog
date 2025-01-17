@@ -1,0 +1,38 @@
+.album {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 30px;
+    border-bottom: none;
+    background-color: #fff;
+    box-shadow: 6px 8px 25px 6px #d1e0e0;
+    padding: 30px;
+    cursor: pointer;
+    &:hover {
+        background-color: #f5f7fa;
+        box-shadow: 6px 8px 25px 6px #e3b5f0;
+    }
+}
+.album-info {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    div {
+        font-family: Inter;
+    }
+}
+.album-title {
+    font-family: Delius;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #6a1b9a;
+    // margin-top: 30px;
+    text-align: center;
+}
+.albums {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 20px auto;
+}

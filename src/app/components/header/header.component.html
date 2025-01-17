@@ -11,10 +11,12 @@
                         Posts
                     </a>
                 </div>
-                <div><a appUnderline [linkName]="'/albums'">Albums</a></div>
+                <div><a [routerLink]="'/albums'" routerLinkActive="active" appUnderline
+                        [linkName]="'/albums'">Albums</a>
+                </div>
             </div>
-            <a (click)="handleButtonClick()">
-                <div class="account">
+            <div class="account">
+                <a (click)="handleButtonClick()">
                     <div class="account-info">
 
                         <div>{{ currentUserName }} </div>
@@ -24,10 +26,11 @@
                         <img src="../../../assets/images/user-rounded-svgrepo-com.svg">
 
                     </div>
-                    <app-menu *ngIf="menuVisible" [shown]="isSignedIn"></app-menu>
-                </div>
+                </a>
+                <app-menu *ngIf="menuVisible" [shown]="isSignedIn" (menuClosed)="closeMenu()"></app-menu>
+            </div>
 
-            </a>
+
         </div>
 
     </div>

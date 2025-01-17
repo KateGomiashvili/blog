@@ -26,20 +26,27 @@ import { UnderlineDirective } from '../../directives/underline.directive';
 })
 export class HeaderComponent {
   menuVisible: boolean = false;
+
   constructor(private dataService: DataService, private router: Router) {}
+
   get isSignedIn(): boolean {
     return !!this.dataService.currentUser; // Returns true if currentUser is set
   }
+
   get currentUserName(): string {
     return this.dataService.currentUser
       ? this.dataService.currentUser.username
       : 'Sign In';
   }
+
   handleButtonClick(): void {
     if (!this.isSignedIn) {
       this.router.navigate(['/login']); // Redirect to the sign-in page
     } else {
       this.menuVisible = !this.menuVisible;
     }
+  }
+  closeMenu(): void {
+    this.menuVisible = false; // Reset menu visibility
   }
 }

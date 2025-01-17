@@ -1,4 +1,4 @@
 <div [ngClass]="{ 'show': shown, 'hide': !shown }" class="dropdown">
     <a [routerLink]="['/my-posts']" class="menu-links">My Posts</a>
-    <a class="menu-links">Log Out</a>
+    <a class="menu-links" (click)="logOut()">Log Out</a>
 </div>
