@@ -5,28 +5,38 @@
             <label for="name">Name:
                 <input id="name" placeholder="Enter your name" formControlName="name">
             </label>
+            <div class="error-message"
+                *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched">
+                <small>Name is required.</small>
+            </div>
             <label for="email">Email:
                 <input id="email" placeholder="Enter your email" formControlName="email">
             </label>
+            <div class="error-message"
+                *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched">
+                <small>Use valid email address.</small>
+            </div>
             <label for="username">Username:
                 <input id="username" placeholder="Enter your Username" formControlName="username">
             </label>
-            <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched">
-                <small>Username is required.</small>
+            <div class="error-message"
+                *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched">
+                <small>Username is required, 6 symbols at least.</small>
             </div>
             <label for="password">Password:
                 <input type="password" id="password" placeholder="Enter your password" formControlName="password">
             </label>
-            <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
+            <div class="error-message"
+                *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched">
                 <small>Password must be at least 6 characters long.</small>
             </div>
             <label for="confirmPassword">Confirm Password:
                 <input type="password" id="confirmPassword" placeholder="Confirm your password"
                     formControlName="confirmpassword">
             </label>
-            <!-- <div *ngIf="registrationForm.get('confirmpassword')?.touched">
+            <div class="error-message" *ngIf="registrationForm.get('confirmpassword')?.touched">
                 <small>Passwords do not match.</small>
-            </div> -->
+            </div>
             <button type="submit">Sign Up</button>
             <div class="message success" *ngIf="successMessage">{{ successMessage }}</div>
             <div class="message error" *ngIf="errorMessage">{{ errorMessage }}</div>

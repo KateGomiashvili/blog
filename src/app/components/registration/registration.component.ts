@@ -9,6 +9,7 @@ import { User } from '../../interfaces/user.interface';
 import { DataService } from '../../services/data.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { PasswordValidatorService } from '../../services/password-validator.service';
 
 @Component({
   selector: 'app-registration',
@@ -25,26 +26,31 @@ export class RegistrationComponent {
   constructor(
     private fb: FormBuilder,
     private dataService: DataService,
-    private router: Router
+    private router: Router,
+    private validator: PasswordValidatorService
   ) {
     this.registrationForm = this.fb.group(
       {
-        name: [''],
-        email: [''],
-        username: ['', Validators.required],
+        name: ['', Validators.required],
+        email: [
+          '',
+          [
+            Validators.required,
+            Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
+          ],
+        ],
+        username: ['', [Validators.required, Validators.minLength(6)]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmpassword: ['', Validators.required],
       },
-      { validator: this.passwordMatchValidator }
+
+      {
+        asyncValidators: [
+          this.validator.passwordMatchValidator.bind(this.validator),
+        ],
+      }
     ); // Add custom validator
   } // To store fetched users
-
-  // Custom validator to check if passwords match
-  passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
-    const password = group.get('password')?.value;
-    const confirmpassword = group.get('confirmpassword')?.value;
-    return password === confirmpassword ? null : { mismatch: true };
-  }
 
   onRegister(): void {
     this.existingUsers = this.dataService.savedUsers;

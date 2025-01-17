@@ -79,6 +79,16 @@ export class ApiService {
       `https://jsonplaceholder.typicode.com/albums/${id}/photos`
     );
   }
+  // getAlbumById(albumId: number): Observable<Photo[]> {
+  //   return this.http.get<Photo[]>(
+  //     `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`
+  //   );
+  // }
+  getAllPhotos(): Observable<Photo[]> {
+    return this.http.get<Photo[]>(
+      'https://jsonplaceholder.typicode.com/photos'
+    );
+  }
   getPhotos(): Observable<Photo[]> {
     return this.http.get<Photo[]>(
       'https://jsonplaceholder.typicode.com/photos'
