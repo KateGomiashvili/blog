@@ -11,7 +11,7 @@ import { Comment } from '../../interfaces/comment.interface';
 @Component({
   selector: 'app-post-details',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink],
+  imports: [CommonModule, FormsModule],
   templateUrl: './post-details.component.html',
   styleUrls: ['./post-details.component.scss'],
 })
@@ -35,39 +35,42 @@ export class PostDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.scrollToBottom();
-    const currentId = Number(this.route?.snapshot.paramMap.get('id'));
-    //if there is no new post, get data from api, else from service
-    if (this.dataService.isPostChanged === false) {
-      this.route.data.subscribe(({ post }) => {
-        this.currentPost = post;
+    const currentId = Number(this.route.snapshot.paramMap.get('id'));
+
+    // Check if the post exists in savedPosts
+    this.currentPost = this.dataService.savedPosts.find(
+      (post) => post.id === currentId
+    ) ?? { id: 0, userId: 0, title: '', body: '', hidden: false };
+
+    // If not found, fetch from API and update savedPosts
+    if (!this.currentPost) {
+      this.apiService.getPosts().subscribe((posts) => {
+        this.dataService.savedPosts = posts;
+        this.currentPost = posts.find((post) => post.id === currentId) ?? {
+          id: 0,
+          userId: 0,
+          title: '',
+          body: '',
+          hidden: false,
+        };
       });
-      this.apiService
-        .getPosts()
-        .subscribe((data) => (this.dataService.savedPosts = data));
-    } else {
-      this.currentPost =
-        this.dataService.savedPosts.find((f) => f.id == currentId) ??
-        this.currentPost;
     }
 
-    //if there is no new commment, get data from api, else from service
-    if (
-      this.dataService.isNewComment.find((f) => f.id == currentId)?.changed ==
-        false ||
-      this.dataService.isNewComment.find((f) => f.id == currentId)?.changed ==
-        undefined
-    ) {
-      this.route.data.subscribe(({ comments }) => {
+    // Load comments similarly
+    if (!this.dataService.allComments[currentId]) {
+      this.apiService.getCommentsById(currentId).subscribe((comments) => {
+        this.dataService.allComments[currentId] = comments;
         this.comments = comments;
       });
     } else {
       this.comments = this.dataService.allComments[currentId];
     }
-    if (this.currentPost.userId == this.dataService.currentUser?.id) {
-      this.ownPost = true;
-    }
+
+    // Check if the current user owns the post
+    this.ownPost =
+      this.currentPost?.userId === this.dataService.currentUser?.id;
   }
+
   private scrollToBottom(): void {
     setTimeout(() => {
       const container =
@@ -75,12 +78,14 @@ export class PostDetailsComponent implements OnInit {
       container.scrollTop = container.scrollHeight;
     });
   }
+
   goBack() {
-    this.router.navigate(['/posts']);
-    // this.router.navigate(['/posts']).then(() => {
-    //   this.posts = this.dataService.savedPosts; // Reload saved posts
-    // });
+    this.router.navigate(['/posts']).then(() => {
+      // Ensure posts are reloaded from saved state
+      this.dataService.savedPosts = this.dataService.savedPosts; // Optional, for clarity
+    });
   }
+
   addNewComment() {
     this.dataService.isNewComment.push({
       id: this.currentPost.id,

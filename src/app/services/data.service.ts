@@ -12,15 +12,22 @@ import { of } from 'rxjs/internal/observable/of';
 })
 export class DataService {
   savedPosts: Post[] = [];
-  savedComments: Comment[] = [];
-  // allComments: Comment[][] = new Array(51).fill([]);
-  allComments: Comment[][] = Array.from({ length: 50 }, () => []);
-  savedUsers!: User[];
-  // allComments!: Comment[][];
-  currentUser?: User;
+  savedUsers: User[] = [];
+  allComments: { [postId: number]: Comment[] } = {};
   isChanged: boolean = false;
-  isNewComment: ChangedComments[] = [{ id: 0, changed: false }];
   isPostChanged: boolean = false;
+  isNewComment: { id: number; changed: boolean }[] = [];
+  //currentUser!: User | null;
+  // savedPosts: Post[] = [];
+  savedComments: Comment[] = [];
+  // // allComments: Comment[][] = new Array(51).fill([]);
+  // allComments: Comment[][] = Array.from({ length: 50 }, () => []);
+  // savedUsers!: User[];
+  // // allComments!: Comment[][];
+  currentUser?: User;
+  // isChanged: boolean = false;
+  // isNewComment: ChangedComments[] = [{ id: 0, changed: false }];
+  // isPostChanged: boolean = false;
   constructor(private apiService: ApiService) {}
   fetchUsers(): Observable<User[]> {
     return this.apiService.getUsers();

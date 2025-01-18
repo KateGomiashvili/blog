@@ -30,20 +30,23 @@ export class PostsComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {
-    if (this.dataService.savedPosts.length > 0) {
-      this.posts = this.dataService.savedPosts;
-      console.log(this.dataService.savedPosts);
-    } else {
+    this.posts =
+      this.dataService.savedPosts.length > 0 ? this.dataService.savedPosts : [];
+
+    if (this.posts.length === 0) {
       this.apiService.getPosts().subscribe((posts) => {
         this.posts = posts;
-        this.dataService.savedPosts = posts;
+        this.dataService.savedPosts = posts; // Cache posts
       });
     }
-    if (this.dataService.savedUsers) {
-      this.users = this.dataService.savedUsers;
-    } else {
+
+    this.users =
+      this.dataService.savedUsers.length > 0 ? this.dataService.savedUsers : [];
+
+    if (this.users.length === 0) {
       this.apiService.getUsers().subscribe((users) => {
         this.users = users;
+        this.dataService.savedUsers = users; // Cache users
       });
     }
   }
@@ -60,42 +63,36 @@ export class PostsComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
+
   addPost() {
     if (this.dataService.currentUser) {
-      this.dataService.isChanged = true;
-      const newPostId = this.posts.length + 1;
+      const newPostId =
+        this.dataService.savedPosts.length > 0
+          ? Math.max(...this.dataService.savedPosts.map((post) => post.id)) + 1
+          : 1;
 
-      this.newPost = {
+      const newPost: Post = {
         userId: this.dataService.currentUser.id,
         id: newPostId,
         title: this.postTitle,
         body: this.postBody,
         hidden: true,
       };
-      this.posts = [this.newPost, ...this.posts];
 
-      this.dataService.savedPosts = this.posts;
-      // this.dataService.savedUsers = this.users;
+      // Update shared state
+      this.dataService.savedPosts = [newPost, ...this.dataService.savedPosts];
+      this.posts = this.dataService.savedPosts;
 
-      this.hidden = !this.hidden;
-
-      this.postTitle = ''; //empty input values
+      this.postTitle = '';
       this.postBody = '';
+      this.hidden = false;
 
-      //send data
-      this.apiService
-        .sendPost(this.newPost)
-        .pipe(
-          tap((response) => {
-            console.log('Post sent successfully!', response);
-          }),
-          catchError((error) => {
-            console.error('Error while sending data:', error);
-            return of(null);
-          })
-        )
-        .subscribe();
-      console.log(this.posts);
+      this.apiService.sendPost(newPost).subscribe({
+        next: () => console.log('Post added successfully!'),
+        error: (error) => console.error('Error while adding post:', error),
+      });
+    } else {
+      this.router.navigate(['/login']);
     }
   }
 }

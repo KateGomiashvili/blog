@@ -4,7 +4,7 @@
             <div class="left-sidebar">
                 <div class="details" *ngIf="!showEditWindow">
                     <div class="post-header">
-                        <div class="arrow-img" [routerLink]="'/posts'">
+                        <div class="arrow-img" (click)="goBack()">
                             <img src="../../../assets/images/back-left-direction.svg">
                         </div>
                         <div [ngClass]="{ 'show': ownPost, 'hide': !ownPost }" class="arrow-img" (click)="editPost()">

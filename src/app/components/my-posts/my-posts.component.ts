@@ -24,13 +24,8 @@ export class MyPostsComponent {
     const currentUser = this.dataService.currentUser;
 
     if (currentUser) {
-      this.apiService.getPostsByUserId(currentUser.id).subscribe(
-        (data: Post[]) => {
-          this.myPosts = data; // Assign the posts here
-        },
-        (error) => {
-          console.error('Error fetching user posts:', error);
-        }
+      this.myPosts = this.dataService.savedPosts.filter(
+        (x) => (x.userId = currentUser.id)
       );
     }
   }

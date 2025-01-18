@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { User } from '../../interfaces/user.interface';
 import { ApiService } from '../../services/api.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.scss',
 })
