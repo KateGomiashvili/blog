@@ -35,8 +35,9 @@ export class WelcomePageComponent {
           console.error('Error fetching users:', err);
         },
       });
+    } else {
+      this.users = this.dataService.savedUsers;
     }
-    this.users = this.dataService.savedUsers;
     // Initialize form
     this.signinForm = this.fb.group({
       username: ['', [Validators.required]],

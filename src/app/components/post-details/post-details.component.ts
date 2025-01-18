@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router, RouterLink } from '@angular/router';
 import { catchError, of, tap } from 'rxjs';
 import { Post } from '../../interfaces/post.interface';
 import { ApiService } from '../../services/api.service';
@@ -11,7 +11,7 @@ import { Comment } from '../../interfaces/comment.interface';
 @Component({
   selector: 'app-post-details',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './post-details.component.html',
   styleUrls: ['./post-details.component.scss'],
 })
@@ -30,7 +30,8 @@ export class PostDetailsComponent implements OnInit {
     private apiService: ApiService,
     private route: ActivatedRoute,
     private dataService: DataService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -75,7 +76,10 @@ export class PostDetailsComponent implements OnInit {
     });
   }
   goBack() {
-    window.history.back();
+    this.router.navigate(['/posts']);
+    // this.router.navigate(['/posts']).then(() => {
+    //   this.posts = this.dataService.savedPosts; // Reload saved posts
+    // });
   }
   addNewComment() {
     this.dataService.isNewComment.push({
