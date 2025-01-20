@@ -43,14 +43,6 @@ export class WelcomePageComponent {
       username: ['', [Validators.required]],
       password: [''],
     });
-    // this.dataService.fetchUsers().subscribe({
-    //   next: (users) => {
-    //     this.users = users; // Store users locally
-    //   },
-    //   error: (err) => {
-    //     console.error('Error fetching users:', err);
-    //   },
-    // });
   }
 
   onSignIn(): void {

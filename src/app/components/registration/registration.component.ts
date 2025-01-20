@@ -50,9 +50,8 @@ export class RegistrationComponent {
           this.validator.passwordMatchValidator.bind(this.validator),
         ],
       }
-    ); // Add custom validator
-  } // To store fetched users
-
+    );
+  }
   onRegister(): void {
     this.existingUsers = this.dataService.savedUsers;
     if (this.registrationForm.valid) {
@@ -68,7 +67,6 @@ export class RegistrationComponent {
         this.successMessage = '';
       } else {
         const id = this.existingUsers.length + 1;
-        // Save the new user (mocked for now)
         const newUser: User = { id, name, username, email, password };
         this.dataService.addUser(newUser).subscribe({
           next: () => {

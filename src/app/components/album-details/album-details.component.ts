@@ -21,9 +21,5 @@ export class AlbumDetailsComponent {
       this.photos = photos;
       console.log(this.photos);
     });
-
-    // this.apiService.getAlbumById(this.currentAlbum.id).subscribe((photos) => {
-    //   this.photos = photos;
-    // });
   }
 }

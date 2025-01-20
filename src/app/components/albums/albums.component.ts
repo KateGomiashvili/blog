@@ -32,10 +32,7 @@ export class AlbumsComponent {
     this.apiService.getPhotos().subscribe((photos) => {
       this.photos = photos;
     });
-    // for (let i: number = 0; i < 100; i++) {
-    //   let currentAlbum = JSON.stringify(this.apiService.getAlbumById(i));
-    //   this.total.push(currentAlbum.length);
-    // }
+
     console.log(this.total);
   }
   getNameById(nameId: number) {
@@ -45,10 +42,4 @@ export class AlbumsComponent {
   getPhotosNumber(albumId: number) {
     return this.photos?.filter((photo) => photo.albumId === albumId).length;
   }
-  // getAlbumLength() {
-  //   for (let i = 0; i < this.totalAlbums; i++) {
-  //     let currentAlbum = this.apiService.getAlbumById(i).subscribe;
-  //     this.total.push(currentAlbum.length);
-  //   }
-  // }
 }
