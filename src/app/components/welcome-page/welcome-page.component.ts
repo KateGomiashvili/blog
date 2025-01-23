@@ -26,17 +26,14 @@ export class WelcomePageComponent {
   ) {}
 
   ngOnInit(): void {
-    if (!this.dataService.savedUsers) {
-      this.apiService.getUsers().subscribe({
-        next: (users) => {
-          this.dataService.savedUsers = users; // Assign the resolved User[] data
-        },
-        error: (err) => {
-          console.error('Error fetching users:', err);
-        },
+    this.users =
+      this.dataService.savedUsers.length > 0 ? this.dataService.savedUsers : [];
+
+    if (this.users.length === 0) {
+      this.apiService.getUsers().subscribe((users) => {
+        this.users = users;
+        this.dataService.savedUsers = users; // Cache users
       });
-    } else {
-      this.users = this.dataService.savedUsers;
     }
     // Initialize form
     this.signinForm = this.fb.group({

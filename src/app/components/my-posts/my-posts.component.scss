@@ -4,6 +4,7 @@
 }
 .posts {
     margin-top: 30px;
+    min-height: calc(100vh - 150px);
 }
 .author-title {
     display: flex;
